@@ -5,11 +5,17 @@ module.exports = {
   async creteUser(req, res) {
     const { name, age, office } = req.body;
 
-    const user = await User.create({
-      name,
-      age,
-      office
-    });
+    let user = await User.findOne({ name });
+
+    if (!user) {
+      user = await User.create({
+        name,
+        age,
+        office
+      });
+    } else {
+      return res.send({ menssage: "Usuário já cadastrado" });
+    }
 
     return res.json(user);
   },
@@ -17,7 +23,12 @@ module.exports = {
   async listUsers(req, res) {
     const users = await User.find().sort('-createdAt');
 
-    return res.send(users);
+    if (users == '') {
+      return res.send({ menssage: "Lista vazia" });
+    } else {
+      return res.send(users);
+    }
+
   },
 
   async deleteUser(req, res) {
@@ -25,7 +36,7 @@ module.exports = {
 
     await user.remove();
 
-    return res.send({ok: true});
+    return res.send({ ok: true });
   },
 
   async updateUser(req, res) {
@@ -37,8 +48,6 @@ module.exports = {
       age,
       office
     });
-
-    return res.send({ok: true});
+    return res.send({ menssage: "Atualizado com sucesso!" });
   }
-
 }

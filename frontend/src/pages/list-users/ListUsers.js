@@ -30,7 +30,7 @@ const ListUsers = () => {
 
   const renderCard = user => {
     return (
-      <Card className="mb-3" key={user.name}>
+      <Card className="mb-3" key={user._id}>
         <CardHeader>Usuário</CardHeader>
         <CardBody>
           <CardTitle>Nome: {user.name}</CardTitle>

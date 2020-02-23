@@ -23,9 +23,7 @@ module.exports = {
   async listUsers(req, res) {
     const users = await User.find().sort('-createdAt');
 
-    if (users == '') {
-      return res.send({ menssage: "Lista vazia" });
-    } else {
+    if (!users == '') {
       return res.send(users);
     }
 

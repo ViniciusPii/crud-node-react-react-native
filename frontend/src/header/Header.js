@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'
 import {
   Collapse,
   Navbar,
@@ -7,11 +8,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText
 } from 'reactstrap';
 
 const Header = (props) => {
@@ -22,12 +18,12 @@ const Header = (props) => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">CRUD FullStack</NavbarBrand>
+        <NavbarBrand tag={Link} to='/' >CRUD FullStack</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+              <NavLink tag={Link} to='/users' >Usuários</NavLink>
             </NavItem>
           </Nav>
         </Collapse>

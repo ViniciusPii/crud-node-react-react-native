@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FormGroup,
   Label,
@@ -11,9 +11,19 @@ import { Link, Redirect } from "react-router-dom";
 
 import axios from "axios";
 
-const CreateUser = () => {
-  const [form, setForm] = useState({});
+const EditUser = ({ match }) => {
+  const [form, setForm] = useState({
+    name: "",
+    office: "",
+    age: ""
+  });
   const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    axios.get(`http://localhost:3000/user/${match.params.id}`).then(res => {
+      setForm(res.data);
+    });
+  }, [match.params.id]);
 
   const onChange = field => evt => {
     setForm({
@@ -22,9 +32,9 @@ const CreateUser = () => {
     });
   };
 
-  const createUser = () => {
+  const editUser = () => {
     axios
-      .post("http://localhost:3000/create", {
+      .put(`http://localhost:3000/update/${match.params.id}`, {
         ...form
       })
       .then(res => {
@@ -47,6 +57,7 @@ const CreateUser = () => {
               <Input
                 type="text"
                 name="name"
+                value={form.name}
                 placeholder="Nome do Funcionário"
                 onChange={onChange("name")}
               />
@@ -56,6 +67,7 @@ const CreateUser = () => {
               <Input
                 type="text"
                 name="office"
+                value={form.office}
                 placeholder="Ex: Desenvolvedor Java"
                 onChange={onChange("office")}
               />
@@ -64,7 +76,8 @@ const CreateUser = () => {
               <Label for="idade">Idade</Label>
               <Input
                 type="number"
-                name="agr"
+                name="age"
+                value={form.age}
                 placeholder="Ex: 25"
                 onChange={onChange("age")}
               />
@@ -76,10 +89,9 @@ const CreateUser = () => {
               <button
                 type="button"
                 className="btn btn-primary"
-                disabled={!form}
-                onClick={createUser}
+                onClick={editUser}
               >
-                Cadastrar
+                Editar
               </button>
             </div>
           </form>
@@ -89,4 +101,4 @@ const CreateUser = () => {
   );
 };
 
-export default CreateUser;
+export default EditUser;

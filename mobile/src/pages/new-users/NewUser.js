@@ -10,3 +10,7 @@ const NewUser = () => {
 };
 
 export default NewUser;
+
+NewUser.navigationOptions = {
+  title: 'Novo Usuário',
+};

@@ -10,3 +10,7 @@ const ListUsers = () => {
 };
 
 export default ListUsers;
+
+ListUsers.navigationOptions = {
+  tabBarLabel: 'Home',
+};

@@ -13,6 +13,8 @@ const NewUser = () => {
 export default NewUser;
 
 NewUser.navigationOptions = {
-  title: 'Novo Usuário',
-  tabBarIcon: () => <Icon name="add-circle" size={24} />,
+  tabBarLabel: 'Novo Usuário',
+  tabBarIcon: ({tintColor}) => (
+    <Icon name="add-circle" size={35} color={tintColor} />
+  ),
 };

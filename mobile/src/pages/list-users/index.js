@@ -1,18 +1,15 @@
 import React from 'react';
 import {SafeAreaView, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {Background} from './styles';
 
 const ListUsers = () => {
-  return (
-    <SafeAreaView>
-      <Text>Olá ListUsers</Text>
-    </SafeAreaView>
-  );
+  return <Background />;
 };
 
 export default ListUsers;
 
 ListUsers.navigationOptions = {
   tabBarLabel: 'Home',
-  tabBarIcon: () => <Icon name="home" size={24} />,
+  tabBarIcon: ({tintColor}) => <Icon name="home" size={35} color={tintColor} />,
 };

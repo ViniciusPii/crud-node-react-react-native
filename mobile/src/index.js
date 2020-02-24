@@ -1,14 +1,11 @@
 import React from 'react';
-import {SafeAreaView, Text} from 'react-native';
 
-import ListUsers from './pages/list-users/ListUsers';
+import Routes from './routes';
 
-const App = () => {
+export default function App() {
   return (
-    <SafeAreaView>
-      <ListUsers></ListUsers>
-    </SafeAreaView>
+    <>
+      <Routes />
+    </>
   );
-};
-
-export default App;
+}

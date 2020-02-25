@@ -6,3 +6,15 @@ export const Background = styled(LinearGradient).attrs({
 })`
   flex: 1;
 `;
+
+export const Container = styled.SafeAreaView`
+  flex: 1;
+  align-items: center;
+`;
+
+export const Title = styled.Text`
+  font-size: 25px;
+  font-weight: bold;
+  color: #fff;
+  margin: 30px 0;
+`;

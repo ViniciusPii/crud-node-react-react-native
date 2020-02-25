@@ -1,14 +1,45 @@
 import React from 'react';
 import {SafeAreaView, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {Background} from '../../components/styles';
+import {Background, Container, Title} from '../../components/styles';
+import {InputArea, Input, Button, ButtonText} from './styles';
 
 const NewUser = () => {
   return (
     <Background>
-      <SafeAreaView>
-        <Text>Olá NewUser</Text>
-      </SafeAreaView>
+      <Container>
+        <Title>Novo Usuário</Title>
+        <InputArea>
+          <Input
+            autoCapitalize={'none'}
+            autoCompleteType={'off'}
+            autoCorrect={false}
+            autoFocus={true}
+            placeholder={'Nome do Funcionário'}
+            placeholderTextColor={'#575757'}
+          />
+          <Input
+            autoCapitalize={'none'}
+            autoCompleteType={'off'}
+            autoCorrect={false}
+            autoFocus={true}
+            placeholder={'Idade'}
+            placeholderTextColor={'#575757'}
+            keyboardType={'numeric'}
+          />
+          <Input
+            autoCapitalize={'none'}
+            autoCompleteType={'off'}
+            autoCorrect={false}
+            autoFocus={true}
+            placeholder={'Cargo'}
+            placeholderTextColor={'#575757'}
+          />
+          <Button>
+            <ButtonText>Cadastrar</ButtonText>
+          </Button>
+        </InputArea>
+      </Container>
     </Background>
   );
 };

@@ -1,10 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {SafeAreaView, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Background} from '../../components/styles';
+import {Background, Container, Title} from '../../components/styles';
 import {
-  Container,
-  Title,
   UserView,
   UserInfo,
   UserTitle,

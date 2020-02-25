@@ -2,7 +2,8 @@ import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 
 import ListUsers from './pages/list-users/index';
-import NewUser from './pages/new-users/index';
+import NewUser from './pages/new-user/index';
+import EditUser from './pages/edit-user/';
 
 const Routes = createAppContainer(
   createSwitchNavigator({
@@ -21,6 +22,7 @@ const Routes = createAppContainer(
         },
       },
     ),
+    Edit: createSwitchNavigator({EditUser}),
   }),
 );
 

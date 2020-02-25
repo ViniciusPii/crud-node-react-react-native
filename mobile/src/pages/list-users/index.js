@@ -14,7 +14,7 @@ import {
 } from './styles';
 import axios from 'axios';
 
-const ListUsers = () => {
+const ListUsers = ({navigation}) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -51,7 +51,7 @@ const ListUsers = () => {
           <Buttom onPress={() => deleteUser(item._id)}>
             <Icon name="trash-can-outline" size={30} color={'#b30000'} />
           </Buttom>
-          <Buttom>
+          <Buttom onPress={() => navigation.navigate('EditUser')}>
             <Icon name="pencil-outline" size={30} color={'#222'} />
           </Buttom>
         </UserInfoActions>

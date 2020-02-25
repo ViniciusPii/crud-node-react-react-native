@@ -1,8 +1,14 @@
 import React, {useState} from 'react';
-import {SafeAreaView, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {Background, Container, Title} from '../../components/styles';
-import {InputArea, Input, Button, ButtonText} from './styles';
+import {
+  Background,
+  Container,
+  Title,
+  InputArea,
+  Input,
+  Button,
+  ButtonText,
+} from '../../components/styles';
 import axios from 'axios';
 
 const NewUser = ({navigation}) => {

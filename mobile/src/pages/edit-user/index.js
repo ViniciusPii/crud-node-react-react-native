@@ -1,30 +1,44 @@
-import React, {useState} from 'react';
-import {SafeAreaView, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import {Background, Container, Title} from '../../components/styles';
-import {InputArea, Input, Button, ButtonText, ButtonCancel} from './styles';
+import React, {useState, useEffect} from 'react';
+import {Text} from 'react-native';
+import {
+  Background,
+  Container,
+  Title,
+  InputArea,
+  Input,
+  Button,
+  ButtonText,
+} from '../../components/styles';
+import {ButtonCancel} from './styles';
 import axios from 'axios';
 
 const EditUser = ({navigation}) => {
+  const [data, setData] = useState({});
   const [name, setName] = useState();
   const [age, setAge] = useState();
   const [office, setOffice] = useState();
 
-  const createUser = () => {
-    axios.post('http://localhost:3333/create', {
+  let id = navigation.state.params.id;
+
+  useEffect(() => {
+    axios.get(`http://localhost:3333/user/${id}`).then(res => {
+      setData(res.data);
+    });
+  }, [age, name, office, id, data]);
+
+  const editUser = () => {
+    axios.put(`http://localhost:3333/update/${id}`, {
       name,
       age,
       office,
     });
     navigation.navigate('ListUsers');
-    setName('');
-    setAge('');
-    setOffice('');
   };
 
   return (
     <Background>
       <Container>
+        <Text>{JSON.stringify(data.age)}</Text>
         <Title>Editar Usuário</Title>
         <InputArea>
           <Input
@@ -56,8 +70,8 @@ const EditUser = ({navigation}) => {
             value={office}
             onChangeText={text => setOffice(text)}
           />
-          <Button onPress={() => createUser()}>
-            <ButtonText>Cadastrar</ButtonText>
+          <Button onPress={() => editUser(id)}>
+            <ButtonText>Editar</ButtonText>
           </Button>
           <ButtonCancel>
             <ButtonText onPress={() => navigation.navigate('ListUsers')}>

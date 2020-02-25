@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import {Text} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Background, Container, Title} from '../../components/styles';
 import {
@@ -51,7 +51,8 @@ const ListUsers = ({navigation}) => {
           <Buttom onPress={() => deleteUser(item._id)}>
             <Icon name="trash-can-outline" size={30} color={'#b30000'} />
           </Buttom>
-          <Buttom onPress={() => navigation.navigate('EditUser')}>
+          <Buttom
+            onPress={() => navigation.navigate('EditUser', {id: item._id})}>
             <Icon name="pencil-outline" size={30} color={'#222'} />
           </Buttom>
         </UserInfoActions>

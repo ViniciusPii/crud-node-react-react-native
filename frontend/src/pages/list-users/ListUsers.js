@@ -15,13 +15,13 @@ const ListUsers = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/list").then(res => {
+    axios.get("http://localhost:3333/list").then(res => {
       setData(res.data);
     });
   }, []);
 
   const deleteUser = id => {
-    axios.delete(`http://localhost:3000/delete/${id}`).then(res => {
+    axios.delete(`http://localhost:3333/delete/${id}`).then(res => {
       const filter = data.filter(item => item._id !== id);
       setData(filter);
     });

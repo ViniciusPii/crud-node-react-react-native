@@ -20,7 +20,7 @@ const EditUser = ({ match }) => {
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/user/${match.params.id}`).then(res => {
+    axios.get(`http://localhost:3333/user/${match.params.id}`).then(res => {
       setForm(res.data);
     });
   }, [match.params.id]);
@@ -34,7 +34,7 @@ const EditUser = ({ match }) => {
 
   const editUser = () => {
     axios
-      .put(`http://localhost:3000/update/${match.params.id}`, {
+      .put(`http://localhost:3333/update/${match.params.id}`, {
         ...form
       })
       .then(res => {

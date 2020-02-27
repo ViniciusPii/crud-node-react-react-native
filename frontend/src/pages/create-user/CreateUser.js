@@ -24,7 +24,7 @@ const CreateUser = () => {
 
   const createUser = () => {
     axios
-      .post("http://localhost:3000/create", {
+      .post("http://localhost:3333/create", {
         ...form
       })
       .then(res => {

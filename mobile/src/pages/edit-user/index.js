@@ -18,13 +18,19 @@ const EditUser = ({navigation}) => {
   const [age, setAge] = useState();
   const [office, setOffice] = useState();
 
-  let id = navigation.state.params.id;
+  const id = navigation.state.params.id;
 
   useEffect(() => {
     axios.get(`http://localhost:3333/user/${id}`).then(res => {
       setData(res.data);
     });
-  }, [age, name, office, id, data]);
+  }, [id]);
+
+  useEffect(() => {
+    setName(data.name);
+    setAge(String(data.age));
+    setOffice(data.office);
+  }, [data]);
 
   const editUser = () => {
     axios.put(`http://localhost:3333/update/${id}`, {
@@ -38,7 +44,6 @@ const EditUser = ({navigation}) => {
   return (
     <Background>
       <Container>
-        <Text>{JSON.stringify(data.age)}</Text>
         <Title>Editar Usuário</Title>
         <InputArea>
           <Input
